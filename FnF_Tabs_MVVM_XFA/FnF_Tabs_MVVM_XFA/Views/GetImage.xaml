@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FnF_Tabs_MVVM_XFA.Views.GetImage"
+             Title="Get Image">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button x:Name="btnGetImage"
+                    Clicked="btnGetImage_Clicked"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Get Image" />
+            <Label x:Name="lblImagePath"
+                   HorizontalOptions="Center"
+                   Text="Image path here" />
+            <Image x:Name="imgPerson"
+                   HorizontalOptions="Center"
+                   HeightRequest="128"
+                   WidthRequest="128"
+                   BackgroundColor="Teal" />
+            <Label x:Name="lblCopiedPath"
+                   HorizontalOptions="Center"
+                   Text="/data/user/0/com.esmsmartsolutions.FnF_Tabs_MVVM_XFA/files/PersonImage.jpg" />
+            <Image x:Name="imgCopied"
+                   HorizontalOptions="Center"
+                   HeightRequest="128"
+                   WidthRequest="128"
+                   BackgroundColor="Teal" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

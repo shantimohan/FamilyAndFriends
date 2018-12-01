@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FnF_Tabs_MVVM_XFA.Views.FriendsPage"
+             Title="{Binding Title}"
+             x:Name="FriendsItemsPage">
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Add" Clicked="AddItem_Clicked" Icon="add.png" />-->
+        <ToolbarItem Clicked="AddItem_Clicked"
+                     Text="Add"
+                     Order="Primary">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, iOS" Value="icon_plus.png"/>
+                    <On Platform="UWP" Value="Icons/icon_plus.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ItemsListView" 
+                      ItemsSource="{Binding Items}"
+                      VerticalOptions="FillAndExpand"
+                      HasUnevenRows="true"
+                      RefreshCommand="{Binding LoadItemsCommand}"
+                      IsPullToRefreshEnabled="true"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      CachingStrategy="RecycleElement"
+                      ItemTapped="ItemsListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding ImageURI}"
+                                       HeightRequest="60"
+                                       WidthRequest="60" />
+
+                                <StackLayout Padding="10">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="ID::"
+                                               LineBreakMode="NoWrap"
+                                               FontSize="10" />
+                                        <Label Text="{Binding Id}"
+                                               Margin="0,0,20,0"
+                                               LineBreakMode="NoWrap"
+                                               FontSize="10" />
+                                        <Label Text="Category:"
+                                               LineBreakMode="NoWrap"
+                                               FontSize="10" />
+                                        <Label Text="{Binding Category}"
+                                               LineBreakMode="NoWrap"
+                                               FontSize="10" />
+                                    </StackLayout>
+                                    <Label Text="{Binding Name}"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontSize="16" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding DateOfBirth, StringFormat='DOB: {0:ddd} {0:d}'}"
+                                               LineBreakMode="NoWrap"
+                                               Style="{DynamicResource ListItemDetailTextStyle}"
+                                               FontSize="12" />
+                                        <Label Text="{Binding Anniversary, StringFormat=' - Anniv: {0:ddd} {0:d}'}"
+                                               LineBreakMode="NoWrap"
+                                               Style="{DynamicResource ListItemDetailTextStyle}"
+                                               FontSize="12" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

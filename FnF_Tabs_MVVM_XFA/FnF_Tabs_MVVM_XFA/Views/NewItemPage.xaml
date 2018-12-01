@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FnF_Tabs_MVVM_XFA.Views.NewItemPage"
+             Title="New Item">
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Save" Clicked="Save_Clicked" />-->
+        <ToolbarItem Text="Delete"
+                     Clicked="Delete_Clicked"
+                     Order="Primary">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, iOS" Value="icon_thrashcan.png"/>
+                    <On Platform="UWP" Value="Icons/icon_thrashcan.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Clicked="Save_Clicked"
+                     Text="Save"
+                     Order="Primary">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, iOS" Value="icon_floppy.png"/>
+                    <On Platform="UWP" Value="Icons/icon_floppy.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <!--<Label Text="Text" FontSize="Medium" />
+            <Entry Text="{Binding Item.Text}" FontSize="Small" />
+            <Label Text="Description" FontSize="Medium" />
+            <Editor Text="{Binding Item.Description}" FontSize="Small" Margin="0" />-->
+            <Label Text="{Binding Id}"
+                       FontSize="Small" />
+            <Label Text="{Binding Category}"
+                       FontSize="Small" />
+            <Label Text="Name" FontSize="Small" />
+            <Entry Text="{Binding Item.Name}" FontSize="Medium"/>
+            <Label Text="Date of Birth:" FontSize="Small" />
+            <DatePicker Date="{Binding Item.DateOfBirth}" />
+            <!--<Entry Text="{Binding Item.DateOfBirth}" FontSize="Medium"/>-->
+            <Label Text="Anniversary" FontSize="Small" />
+            <DatePicker Date="{Binding Item.Anniversary}" />
+            <!--<Entry Text="{Binding Item.Anniversary}" FontSize="Medium"/>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

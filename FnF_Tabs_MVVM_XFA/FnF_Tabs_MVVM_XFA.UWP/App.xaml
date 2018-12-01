@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="FnF_Tabs_MVVM_XFA.UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FnF_Tabs_MVVM_XFA.UWP"
+    RequestedTheme="Light">
+
+</Application>
