@@ -6,7 +6,7 @@
              x:Name="FamilyItemsPage">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Text="Add" Clicked="AddItem_Clicked" Icon="add.png" />-->
-        <ToolbarItem Text="Image" Clicked="Image_Clicked" />
+        <!--<ToolbarItem Text="Image" Clicked="Image_Clicked" />-->
         <ToolbarItem Clicked="AddItem_Clicked"
                      Text="Add"
                      Order="Primary">
@@ -67,6 +67,66 @@
                                                LineBreakMode="NoWrap"
                                                Style="{DynamicResource ListItemDetailTextStyle}"
                                                FontSize="12" />
+                                    </StackLayout>
+
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <!--<TapGestureRecognizer Tapped="GstrDoubleTapStackLayout_Tapped"
+                                                                  CommandParameter="{Binding TaskID}"
+                                                                  NumberOfTapsRequired="2" />-->
+                                            <TapGestureRecognizer Tapped="GstrSingleTapStackLayout_Tapped"
+                                                                  CommandParameter="{Binding Id}"
+                                                                  NumberOfTapsRequired="1" />
+                                        </StackLayout.GestureRecognizers>
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <Label Grid.Column="0"
+                                                   Text="Testing Gesture Tap"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   HorizontalTextAlignment="Start" />
+
+                                            <Image Grid.Column="1"
+                                                   Margin="0,0,2,0"
+                                                   HeightRequest="24"
+                                                   WidthRequest="24">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="gstrTapPhoneCall_Tapped"
+                                                                          CommandParameter="{Binding Id}"
+                                                                          NumberOfTapsRequired="1" />
+                                                </Image.GestureRecognizers>
+                                                <Image.Source>
+                                                    <OnPlatform x:TypeArguments="FileImageSource">
+                                                        <On Platform="Android, iOS" Value="image_circled_phone_blue.jpg"/>
+                                                        <On Platform="UWP" Value="Icons/image_circled_phone_blue.jpg"/>
+                                                    </OnPlatform>
+                                                </Image.Source>
+                                            </Image>
+                                            
+                                            <Image Grid.Column="2"
+                                                   Margin="0,0,2,0"
+                                                   VerticalOptions="Start"
+                                                   HeightRequest="24"
+                                                   WidthRequest="24">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="gstrTapNotes_Tapped"
+                                                                          CommandParameter="{Binding Id}"
+                                                                          NumberOfTapsRequired="1" />
+                                                </Image.GestureRecognizers>
+                                                <Image.Source>
+                                                    <OnPlatform x:TypeArguments="FileImageSource">
+                                                        <On Platform="Android, iOS" Value="image_notes.jpg"/>
+                                                        <On Platform="UWP" Value="Icons/image_notes.jpg"/>
+                                                    </OnPlatform>
+                                                </Image.Source>
+                                            </Image>
+                                        </Grid>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>

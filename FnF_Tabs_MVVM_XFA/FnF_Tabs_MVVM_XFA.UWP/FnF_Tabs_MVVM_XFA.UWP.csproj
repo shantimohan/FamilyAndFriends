@@ -107,6 +107,8 @@
     <Content Include="Icons\icon_floppy.png" />
     <Content Include="Icons\icon_plus.png" />
     <Content Include="Icons\icon_thrashcan.png" />
+    <Content Include="Icons\image_circled_phone_blue.jpg" />
+    <Content Include="Icons\image_notes.jpg" />
     <Content Include="person.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />

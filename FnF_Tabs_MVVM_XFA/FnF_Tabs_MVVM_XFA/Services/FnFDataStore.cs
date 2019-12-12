@@ -20,9 +20,7 @@ namespace FnF_Tabs_MVVM_XFA.Services
         {
             dbConn = new SQLiteAsyncConnection(dbPath);
             dbConn.CreateTableAsync<Item>().Wait();
-            //TODO: The following two statements are to be run when the table structure changes
-            //dbConn.DropTableAsync<Item>().Wait();
-            //dbConn.CreateTableAsync<Item>().Wait();
+            //RecreateDB().Wait();
         }
 
         public async Task RecreateDB()
@@ -39,9 +37,6 @@ namespace FnF_Tabs_MVVM_XFA.Services
 
         public async Task<bool> AddItemAsync(Item item)
         {
-            Debug.WriteLine($"AddItemAsync: item.Id = {item.Id}");
-            Debug.WriteLine($"AddItemAsync: item.Category = {item.Category}");
-
             //DBOP: Insert item into table People
             await dbConn.InsertAsync(item);
 
@@ -66,23 +61,12 @@ namespace FnF_Tabs_MVVM_XFA.Services
 
         public async Task<List<Item>> GetItemAsync(int id)
         {
-            //return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
-
             return await dbConn.QueryAsync<Item>($"SELECT * FROM [people] WHERE [Id] = {id}");
         }
 
         public async Task<IEnumerable<Item>> GetItemsAsync(string category, bool forceRefresh = false)
         {
-            //return await Task.FromResult(items.Where(x => x.Category == category));
-
             return await dbConn.QueryAsync<Item>($"SELECT * FROM [people] WHERE [Category] = \"{category}\"");
-        }
-
-        //DBOP: Get all existing data from people table
-        public Task<List<Item>> GetAllPeopleAsync()
-        {
-            // return a list of people saved to the Item table in the database
-            return dbConn.Table<Item>().ToListAsync();
         }
     }
 }

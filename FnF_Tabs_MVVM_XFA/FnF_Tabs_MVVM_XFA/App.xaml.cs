@@ -22,6 +22,7 @@ namespace FnF_Tabs_MVVM_XFA
             InitializeComponent();
 
             MainPage = new MainPage();
+            //MainPage = new SplashPage();
         }
 
         //DBOP: Initialize database instance

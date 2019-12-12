@@ -56,5 +56,44 @@ namespace FnF_Tabs_MVVM_XFA.Views
         {
             await Navigation.PushAsync(new GetImage());
         }
+
+        private void GstrSingleTapStackLayout_Tapped(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Entering: GstrSingleTapStackLayout_Tapped");
+
+            var objType = sender.GetType();
+
+            int ID = (int)((TappedEventArgs)e).Parameter;
+            var item = familyViewModel.Items.Where(x => x.Id == ID).FirstOrDefault();
+            ItemsListView.SelectedItem = item;
+
+            Debug.WriteLine($"Exiting: GstrSingleTapStackLayout_Tapped - ID = {ID}");
+        }
+
+        private void gstrTapPhoneCall_Tapped(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Entering: gstrTapPhoneCall_Tapped");
+
+            var objType = sender.GetType();
+
+            int ID = (int)((TappedEventArgs)e).Parameter;
+            var item = familyViewModel.Items.Where(x => x.Id == ID).FirstOrDefault();
+            ItemsListView.SelectedItem = item;
+
+            Debug.WriteLine($"Exiting: gstrTapPhoneCall_Tapped - ID = {ID}");
+        }
+
+        private void gstrTapNotes_Tapped(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Entering: gstrTapNotes_Tapped");
+
+            var objType = sender.GetType();
+
+            int ID = (int)((TappedEventArgs)e).Parameter;
+            var item = familyViewModel.Items.Where(x => x.Id == ID).FirstOrDefault();
+            ItemsListView.SelectedItem = item;
+
+            Debug.WriteLine($"Exiting: gstrTapNotes_Tapped - ID = {ID}");
+        }
     }
 }

@@ -172,4 +172,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_floppy%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\image_notes.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\image_circled_phone_blue.jpg" />
+  </ItemGroup>
 </Project>
