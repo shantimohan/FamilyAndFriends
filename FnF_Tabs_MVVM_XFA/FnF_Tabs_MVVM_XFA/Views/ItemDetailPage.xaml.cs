@@ -233,7 +233,10 @@ namespace FnF_Tabs_MVVM_XFA.Views
                     await srcStream.CopyToAsync(destStream);
                     destStream.Dispose();
 
-                    contactImageUri = rootFolder.Path + Device.OnPlatform("/", "/", "\\") + copy2Filename;
+                    string strFolderSeparator = "/";
+                    if (Device.RuntimePlatform == Device.UWP)
+                        strFolderSeparator = "\\";
+                    contactImageUri = rootFolder.Path + strFolderSeparator + copy2Filename;
 
                 }  // end of: using (Stream srcStream = photoPicked.GetStream())
             }

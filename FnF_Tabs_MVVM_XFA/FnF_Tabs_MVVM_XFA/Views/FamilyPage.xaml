@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:local="clr-namespace:FnF_Tabs_MVVM_XFA"
              x:Class="FnF_Tabs_MVVM_XFA.Views.FamilyPage"
              Title="{Binding Title}"
              x:Name="FamilyItemsPage">
@@ -19,9 +21,238 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
+    <ContentPage.Behaviors>
+        <local:SfListViewAccordionBehavior />
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ItemsListView" 
+            <sf:SfListView x:Name="ItemsListView"
+                           ItemsSource="{Binding Items}"
+                           VerticalOptions="FillAndExpand"
+                           AutoFitMode="Height"
+                           IsBusy="{Binding IsBusy, Mode=TwoWay}">
+                <sf:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="Grid1"
+                                  VerticalOptions="FillAndExpand"
+                                  HorizontalOptions="FillAndExpand"
+                                  RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid x:Name="Grid2a"
+                                      RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding ImageURI}"
+                                               HeightRequest="60"
+                                               WidthRequest="60" />
+
+                                        <StackLayout Padding="10">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="ID::"
+                                                       LineBreakMode="NoWrap"
+                                                       FontSize="10" />
+                                                <Label Text="{Binding Id}"
+                                                       Margin="0,0,20,0"
+                                                       LineBreakMode="NoWrap"
+                                                       FontSize="10" />
+                                                <Label Text="Category:"
+                                                       LineBreakMode="NoWrap"
+                                                       FontSize="10" />
+                                                <Label Text="{Binding Category}"
+                                                       LineBreakMode="NoWrap"
+                                                       FontSize="10" />
+                                            </StackLayout>
+                                            <Label Text="{Binding Name}"
+                                                   LineBreakMode="NoWrap"
+                                                   Style="{DynamicResource ListItemTextStyle}"
+                                                   FontSize="16" />
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding DateOfBirth, StringFormat='DOB: {0:ddd} {0:d}'}"
+                                                       LineBreakMode="NoWrap"
+                                                       Style="{DynamicResource ListItemDetailTextStyle}"
+                                                       FontSize="12" />
+                                                <Label Text="{Binding Anniversary, StringFormat=' - Anniv: {0:ddd} {0:d}'}"
+                                                       LineBreakMode="NoWrap"
+                                                       Style="{DynamicResource ListItemDetailTextStyle}"
+                                                       FontSize="12" />
+                                            </StackLayout>
+
+                                            <StackLayout>
+                                                <StackLayout.GestureRecognizers>
+                                                    <!--<TapGestureRecognizer Tapped="GstrDoubleTapStackLayout_Tapped"
+                                                                  CommandParameter="{Binding TaskID}"
+                                                                  NumberOfTapsRequired="2" />-->
+                                                    <TapGestureRecognizer Tapped="GstrSingleTapStackLayout_Tapped"
+                                                                          CommandParameter="{Binding Id}"
+                                                                          NumberOfTapsRequired="1" />
+                                                </StackLayout.GestureRecognizers>
+
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Label Grid.Column="0"
+                                                           Text="Testing Gesture Tap"
+                                                           FontSize="Medium"
+                                                           HorizontalOptions="StartAndExpand"
+                                                           HorizontalTextAlignment="Start" />
+
+                                                    <Image Grid.Column="1"
+                                                           Margin="0,0,2,0"
+                                                           HeightRequest="24"
+                                                           WidthRequest="24">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="gstrTapPhoneCall_Tapped"
+                                                                          CommandParameter="{Binding Id}"
+                                                                          NumberOfTapsRequired="1" />
+                                                        </Image.GestureRecognizers>
+                                                        <Image.Source>
+                                                            <OnPlatform x:TypeArguments="FileImageSource">
+                                                                <On Platform="Android, iOS" Value="image_circled_phone_blue.jpg"/>
+                                                                <On Platform="UWP" Value="Icons/image_circled_phone_blue.jpg"/>
+                                                            </OnPlatform>
+                                                        </Image.Source>
+                                                    </Image>
+
+                                                    <Image Grid.Column="2"
+                                                           Margin="0,0,2,0"
+                                                           VerticalOptions="Start"
+                                                           HeightRequest="24"
+                                                           WidthRequest="24">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="gstrTapNotes_Tapped"
+                                                                          CommandParameter="{Binding Id}"
+                                                                          NumberOfTapsRequired="1" />
+                                                        </Image.GestureRecognizers>
+                                                        <Image.Source>
+                                                            <OnPlatform x:TypeArguments="FileImageSource">
+                                                                <On Platform="Android, iOS" Value="image_notes.jpg"/>
+                                                                <On Platform="UWP" Value="Icons/image_notes.jpg"/>
+                                                            </OnPlatform>
+                                                        </Image.Source>
+                                                    </Image>
+                                                </Grid>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+
+                                <Grid x:Name="Grid2b"
+                                      Grid.Row="1"
+                                      IsVisible="{Binding ShowActionMenu, Mode=TwoWay}"
+                                      ColumnSpacing="0"
+                                      RowSpacing="0"
+                                      Padding="5"
+                                      HorizontalOptions="FillAndExpand"
+                                      VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                                        <RowDefinition Height="1" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="1" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <BoxView Grid.Row="0"
+                                             Grid.ColumnSpan="2"
+                                             BackgroundColor="LightGray"
+                                             HeightRequest="1" />
+                                    <Label Grid.Row="1"
+                                           Grid.Column="0"
+                                           Text="N"
+                                           TextColor="#757575"
+                                           Margin="0,5,0,0"
+                                           WidthRequest="30"
+                                           HeightRequest="30"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand" />
+                                    <Label Grid.Row="1"
+                                           Grid.Column="1"
+                                           FontSize="10"
+                                           Text="Create New Member" />
+
+                                    <Label Grid.Row="2"
+                                           Grid.Column="0"
+                                           Text="E"
+                                           TextColor="#757575"
+                                           Margin="0,5,0,0"
+                                           WidthRequest="30"
+                                           HeightRequest="30"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand" />
+                                    <Label Grid.Row="2"
+                                           Grid.Column="1"
+                                           FontSize="10"
+                                           Text="Edit this Member" />
+
+                                    <Label Grid.Row="3"
+                                           Grid.Column="0"
+                                           Text="M"
+                                           TextColor="#757575"
+                                           Margin="0,5,0,0"
+                                           WidthRequest="30"
+                                           HeightRequest="30"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand" />
+                                    <Label Grid.Row="3"
+                                           Grid.Column="1"
+                                           FontSize="10"
+                                           Text="Send a Message" />
+
+                                    <Label Grid.Row="4"
+                                           Grid.Column="0"
+                                           Text="U"
+                                           TextColor="#757575"
+                                           Margin="0,5,0,0"
+                                           WidthRequest="30"
+                                           HeightRequest="30"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand" />
+                                    <Label Grid.Row="4"
+                                           Grid.Column="1"
+                                           FontSize="10"
+                                           Text="Unfriend this Member" />
+
+                                    <Label Grid.Row="5"
+                                           Grid.Column="0"
+                                           Text="S"
+                                           TextColor="#757575"
+                                           Margin="0,5,0,0"
+                                           WidthRequest="30"
+                                           HeightRequest="30"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand" />
+                                    <Label Grid.Row="5"
+                                           Grid.Column="1"
+                                           FontSize="10"
+                                           Text="Show Related Members" />
+                                    <BoxView Grid.Row="6"
+                                             Grid.ColumnSpan="2"
+                                             BackgroundColor="LightGray"
+                                             HeightRequest="1" />
+                                </Grid>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </sf:SfListView.ItemTemplate>
+            </sf:SfListView>
+            <!--<ListView x:Name="ItemsListView" 
                       ItemsSource="{Binding Items}"
                       VerticalOptions="FillAndExpand"
                       HasUnevenRows="true"
@@ -71,9 +302,9 @@
 
                                     <StackLayout>
                                         <StackLayout.GestureRecognizers>
-                                            <!--<TapGestureRecognizer Tapped="GstrDoubleTapStackLayout_Tapped"
+                                            --><!--<TapGestureRecognizer Tapped="GstrDoubleTapStackLayout_Tapped"
                                                                   CommandParameter="{Binding TaskID}"
-                                                                  NumberOfTapsRequired="2" />-->
+                                                                  NumberOfTapsRequired="2" />--><!--
                                             <TapGestureRecognizer Tapped="GstrSingleTapStackLayout_Tapped"
                                                                   CommandParameter="{Binding Id}"
                                                                   NumberOfTapsRequired="1" />
@@ -133,7 +364,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

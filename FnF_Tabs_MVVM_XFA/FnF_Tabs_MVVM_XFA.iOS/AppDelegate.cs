@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.ListView.XForms.iOS;
 using UIKit;
 
 namespace FnF_Tabs_MVVM_XFA.iOS
@@ -24,6 +25,7 @@ namespace FnF_Tabs_MVVM_XFA.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             //string dbPath = FileAccessHelper.GetLocalFilePath("people.db3");
+            SfListViewRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.ListView.XForms.UWP;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace FnF_Tabs_MVVM_XFA.UWP
             this.InitializeComponent();
 
             //string dbPath = FileAccessHelper.GetLocalFilePath("people.db3");
+            SfListViewRenderer.Init();
             LoadApplication(new FnF_Tabs_MVVM_XFA.App());
         }
     }

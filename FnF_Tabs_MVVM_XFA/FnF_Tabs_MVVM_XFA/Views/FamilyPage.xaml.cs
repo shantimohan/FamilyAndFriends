@@ -23,13 +23,52 @@ namespace FnF_Tabs_MVVM_XFA.Views
             BindingContext = familyViewModel = new ItemsViewModel("Family");
 		}
 
-        private async void ItemsListView_ItemTapped(object sender, ItemTappedEventArgs args)
-        {
-            Item item = (Item)args.Item;
-            if (item != null)
-                //await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-                await Navigation.PushAsync(new ItemDetailPage(familyViewModel, item));
-        }
+        //private async void ItemsListView_ItemTapped(object sender, ItemTappedEventArgs args)
+        //{
+        //    // This event handler is to be used for XF builtin ListView
+        //    Item item = (Item)args.Item;
+        //    if (item != null)
+        //    {
+        //        //await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+        //        await Navigation.PushAsync(new ItemDetailPage(familyViewModel, item));
+        //    }
+        //}
+
+        //private void ItemsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        //{
+        //    Item item = (Item)e.ItemData;    //args.Item;
+
+        //    if (item != null)
+        //    {
+        //        item.ShowActionMenu = !item.ShowActionMenu;
+        //        var index = ItemsListView.DataSource.DisplayItems.IndexOf(item);
+
+        //        Device.BeginInvokeOnMainThread(() => { ItemsListView.RefreshListViewItem(index, index, false); });
+        //    }
+        //}
+
+        //private void ItemsListView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        //{
+        //    Item prevItem = (Item)e.RemovedItems.FirstOrDefault();
+
+        //    if (prevItem != null)
+        //    {
+        //        int prevIndex = ItemsListView.DataSource.DisplayItems.IndexOf(prevItem);
+        //        prevItem.ShowActionMenu = false;
+        //        //Device.BeginInvokeOnMainThread(() => { ItemsListView.RefreshListViewItem(prevIndex, prevIndex, false); });
+        //        ItemsListView.RefreshListViewItem(prevIndex, prevIndex, false);
+        //    }
+
+        //    Item nextItem = (Item)e.AddedItems.FirstOrDefault();
+
+        //    if (nextItem != null)
+        //    {
+        //        int nextIndex = ItemsListView.DataSource.DisplayItems.IndexOf(nextItem);
+        //        nextItem.ShowActionMenu = false;
+        //        //Device.BeginInvokeOnMainThread(() => { ItemsListView.RefreshListViewItem(nextIndex, nextIndex, false); });
+        //        ItemsListView.RefreshListViewItem(nextIndex, nextIndex, false);
+        //    }
+        //}
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {

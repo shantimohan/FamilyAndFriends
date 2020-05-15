@@ -19,6 +19,8 @@ namespace FnF_Tabs_MVVM_XFA
 
         public App()
         {
+            // Register syncfusion licence
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjU3MjQ4QDMxMzgyZTMxMmUzMEtYMlRxc2hIYXp5TS9OUjhGdnh3aUxNV0pIeTc1M0tSVFJrTExwQnpBM1U9");
             InitializeComponent();
 
             MainPage = new MainPage();
