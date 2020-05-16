@@ -152,9 +152,10 @@
                                       ColumnSpacing="0"
                                       RowSpacing="0"
                                       Padding="5"
+                                      BackgroundColor="Yellow"
                                       HorizontalOptions="FillAndExpand"
                                       VerticalOptions="FillAndExpand">
-                        <Grid.RowDefinitions>
+                                    <Grid.RowDefinitions>
                                         <RowDefinition Height="1" />
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
@@ -175,7 +176,9 @@
                                              HeightRequest="1" />
                                     <Label Grid.Row="1"
                                            Grid.Column="0"
-                                           Text="N"
+                                           FontFamily="{StaticResource SyncFontIcons}"
+                                           FontSize="{OnPlatform Android=20, iOS=Large, UWP=Medium}"
+                                           Text="&#xe761;"
                                            TextColor="#757575"
                                            Margin="0,5,0,0"
                                            WidthRequest="30"
@@ -184,12 +187,16 @@
                                            VerticalOptions="CenterAndExpand" />
                                     <Label Grid.Row="1"
                                            Grid.Column="1"
-                                           FontSize="10"
-                                           Text="Create New Member" />
+                                           Text="Create New Member"
+                                           FontSize="14"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center" />
 
                                     <Label Grid.Row="2"
                                            Grid.Column="0"
-                                           Text="E"
+                                           FontFamily="{StaticResource SyncFontIcons}"
+                                           FontSize="{OnPlatform Android=20, iOS=Large, UWP=Medium}"
+                                           Text="&#xe72a;"
                                            TextColor="#757575"
                                            Margin="0,5,0,0"
                                            WidthRequest="30"
@@ -198,12 +205,16 @@
                                            VerticalOptions="CenterAndExpand" />
                                     <Label Grid.Row="2"
                                            Grid.Column="1"
-                                           FontSize="10"
-                                           Text="Edit this Member" />
+                                           Text="Edit this Member"
+                                           FontSize="14"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center" />
 
                                     <Label Grid.Row="3"
                                            Grid.Column="0"
-                                           Text="M"
+                                           FontFamily="{StaticResource SyncFontIcons}"
+                                           FontSize="{OnPlatform Android=20, iOS=Large, UWP=Medium}"
+                                           Text="&#xe746;"
                                            TextColor="#757575"
                                            Margin="0,5,0,0"
                                            WidthRequest="30"
@@ -212,12 +223,16 @@
                                            VerticalOptions="CenterAndExpand" />
                                     <Label Grid.Row="3"
                                            Grid.Column="1"
-                                           FontSize="10"
-                                           Text="Send a Message" />
+                                           Text="Send a Message"
+                                           FontSize="14"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center" />
 
                                     <Label Grid.Row="4"
                                            Grid.Column="0"
-                                           Text="U"
+                                           FontFamily="{StaticResource SyncFontIcons}"
+                                           FontSize="{OnPlatform Android=20, iOS=Large, UWP=Medium}"
+                                           Text="&#xe722;"
                                            TextColor="#757575"
                                            Margin="0,5,0,0"
                                            WidthRequest="30"
@@ -226,12 +241,16 @@
                                            VerticalOptions="CenterAndExpand" />
                                     <Label Grid.Row="4"
                                            Grid.Column="1"
-                                           FontSize="10"
-                                           Text="Unfriend this Member" />
+                                           Text="Unfriend this Member"
+                                           FontSize="14"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center" />
 
                                     <Label Grid.Row="5"
                                            Grid.Column="0"
-                                           Text="S"
+                                           FontFamily="{StaticResource SyncFontIcons}"
+                                           FontSize="{OnPlatform Android=20, iOS=Large, UWP=Medium}"
+                                           Text="&#xe767;"
                                            TextColor="#757575"
                                            Margin="0,5,0,0"
                                            WidthRequest="30"
@@ -240,8 +259,11 @@
                                            VerticalOptions="CenterAndExpand" />
                                     <Label Grid.Row="5"
                                            Grid.Column="1"
-                                           FontSize="10"
-                                           Text="Show Related Members" />
+                                           Text="Show Related Members"
+                                           FontSize="14"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center" />
+                                    
                                     <BoxView Grid.Row="6"
                                              Grid.ColumnSpan="2"
                                              BackgroundColor="LightGray"

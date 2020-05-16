@@ -48,7 +48,7 @@ namespace FnF_Tabs_MVVM_XFA
                 tappedItem.ShowActionMenu = false;
 
                 if (Device.RuntimePlatform != Device.macOS)
-                    Device.BeginInvokeOnMainThread(() => { listview.RefreshListViewItem(previousIndex, previousIndex, false); });
+                    Device.BeginInvokeOnMainThread(() => { listview.RefreshListViewItem(previousIndex, previousIndex, true); });
             }
 
             if (tappedItem == (e.ItemData as Item))
@@ -56,7 +56,7 @@ namespace FnF_Tabs_MVVM_XFA
                 if (Device.RuntimePlatform == Device.macOS)
                 {
                     var previousIndex = listview.DataSource.DisplayItems.IndexOf(tappedItem);
-                    Device.BeginInvokeOnMainThread(() => { listview.RefreshListViewItem(previousIndex, previousIndex, false); });
+                    Device.BeginInvokeOnMainThread(() => { listview.RefreshListViewItem(previousIndex, previousIndex, true); });
                 }
 
                 tappedItem = null;
@@ -71,12 +71,12 @@ namespace FnF_Tabs_MVVM_XFA
                     var visibleLines = this.listview.GetVisualContainer().ScrollRows.GetVisibleLines();
                     var firstIndex = visibleLines[visibleLines.FirstBodyVisibleIndex].LineIndex;
                     var lastIndex = visibleLines[visibleLines.LastBodyVisibleIndex].LineIndex;
-                    Device.BeginInvokeOnMainThread(() => { listview.RefreshListViewItem(firstIndex, lastIndex, false); });
+                    Device.BeginInvokeOnMainThread(() => { listview.RefreshListViewItem(firstIndex, lastIndex, true); });
                 }
                 else
                 {
                     var currentIndex = listview.DataSource.DisplayItems.IndexOf(e.ItemData);
-                    Device.BeginInvokeOnMainThread(() => { listview.RefreshListViewItem(currentIndex, currentIndex, false); });
+                    Device.BeginInvokeOnMainThread(() => { listview.RefreshListViewItem(currentIndex, currentIndex, true); });
                 }
             }
 

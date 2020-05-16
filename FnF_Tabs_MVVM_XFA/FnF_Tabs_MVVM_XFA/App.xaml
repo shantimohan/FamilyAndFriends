@@ -10,6 +10,12 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
+
+            <OnPlatform x:Key="SyncFontIcons" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Sync FontIcons" />
+                <On Platform="Android" Value="Sync FontIcons.ttf#" />
+                <On Platform="UWP" Value="Assets/Fonts/Sync FontIcons.ttf#Sync FontIcons" />
+            </OnPlatform>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

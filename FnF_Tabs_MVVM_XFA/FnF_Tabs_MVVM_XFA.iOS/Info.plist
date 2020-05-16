@@ -36,5 +36,8 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to photos.</string>
+  <array>
+    <string>Sync FontIcons.ttf</string>
+  </array>
 </dict>
 </plist>
