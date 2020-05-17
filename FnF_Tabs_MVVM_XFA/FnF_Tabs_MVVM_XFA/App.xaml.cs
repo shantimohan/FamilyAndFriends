@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 using FnF_Tabs_MVVM_XFA.Views;
 using FnF_Tabs_MVVM_XFA.Services;
 using System.IO;
+using FnF_Tabs_MVVM_XFA.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace FnF_Tabs_MVVM_XFA
@@ -11,6 +12,7 @@ namespace FnF_Tabs_MVVM_XFA
     public partial class App : Application
     {
         public static DateTime DefaultDate = new DateTime(2018, 1, 1);
+        public static Item tappedItem;
 
         //DBOP: Declare database instance
         static FnFDataStore fnfDatabase;

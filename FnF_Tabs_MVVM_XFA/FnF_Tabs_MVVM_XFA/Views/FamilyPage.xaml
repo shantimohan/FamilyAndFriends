@@ -153,7 +153,7 @@
                                       RowSpacing="0"
                                       Padding="5"
                                       BackgroundColor="Yellow"
-                                      HorizontalOptions="FillAndExpand"
+                                      HorizontalOptions="Fill"
                                       VerticalOptions="FillAndExpand">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="1" />
@@ -167,7 +167,7 @@
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="50" />
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
                                     <BoxView Grid.Row="0"
@@ -203,12 +203,17 @@
                                            HeightRequest="30"
                                            HorizontalOptions="CenterAndExpand"
                                            VerticalOptions="CenterAndExpand" />
-                                    <Label Grid.Row="2"
-                                           Grid.Column="1"
-                                           Text="Edit this Member"
-                                           FontSize="14"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Center" />
+                                    <Grid Grid.Row="2" Grid.Column="1">
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="EditAction_Tapped"
+                                                                  CommandParameter="{Binding .}"
+                                                                  NumberOfTapsRequired="1" />
+                                        </Grid.GestureRecognizers>
+                                        <Label Text="Edit this Member"
+                                               FontSize="14"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center" />
+                                    </Grid>
 
                                     <Label Grid.Row="3"
                                            Grid.Column="0"
@@ -246,7 +251,7 @@
                                            HorizontalOptions="Start"
                                            VerticalOptions="Center" />
 
-                                    <Label Grid.Row="5"
+                                    <!--<Label Grid.Row="5"
                                            Grid.Column="0"
                                            FontFamily="{StaticResource SyncFontIcons}"
                                            FontSize="{OnPlatform Android=20, iOS=Large, UWP=Medium}"
@@ -256,10 +261,28 @@
                                            WidthRequest="30"
                                            HeightRequest="30"
                                            HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand" />
+                                           VerticalOptions="CenterAndExpand" />-->
+                                    <Image Grid.Row="5"
+                                           Grid.Column="0"
+                                           Margin="0,2"
+                                           VerticalOptions="Start"
+                                           HeightRequest="24"
+                                           WidthRequest="24">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="gstrTapNotes_Tapped"
+                                                                  CommandParameter="{Binding Id}"
+                                                                  NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                        <Image.Source>
+                                            <OnPlatform x:TypeArguments="FileImageSource">
+                                                <On Platform="Android, iOS" Value="image_notes.jpg"/>
+                                                <On Platform="UWP" Value="Icons/image_notes.jpg"/>
+                                            </OnPlatform>
+                                        </Image.Source>
+                                    </Image>
                                     <Label Grid.Row="5"
                                            Grid.Column="1"
-                                           Text="Show Related Members"
+                                           Text="Show Notes of this Member"
                                            FontSize="14"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Center" />

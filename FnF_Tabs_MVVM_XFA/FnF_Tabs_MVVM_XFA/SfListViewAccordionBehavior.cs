@@ -13,7 +13,7 @@ namespace FnF_Tabs_MVVM_XFA
     {
         #region Fields
 
-        private Item tappedItem;
+        //private Item tappedItem;      // Moved to App.xaml.cs
         private Syncfusion.ListView.XForms.SfListView listview;
         #endregion
 
@@ -41,30 +41,31 @@ namespace FnF_Tabs_MVVM_XFA
         {
             Debug.WriteLine("Entering - Behavior: Item Tapped / Double Tapped");
 
-            if (tappedItem != null && tappedItem.ShowActionMenu)
+            if (App.tappedItem != null && App.tappedItem.ShowActionMenu)
             {
-                var previousIndex = listview.DataSource.DisplayItems.IndexOf(tappedItem);
+                var previousIndex = listview.DataSource.DisplayItems.IndexOf(App.tappedItem);
 
-                tappedItem.ShowActionMenu = false;
+                App.tappedItem.ShowActionMenu = false;
 
                 if (Device.RuntimePlatform != Device.macOS)
                     Device.BeginInvokeOnMainThread(() => { listview.RefreshListViewItem(previousIndex, previousIndex, true); });
             }
 
-            if (tappedItem == (e.ItemData as Item))
+            if (App.tappedItem == (e.ItemData as Item))
             {
                 if (Device.RuntimePlatform == Device.macOS)
                 {
-                    var previousIndex = listview.DataSource.DisplayItems.IndexOf(tappedItem);
+                    var previousIndex = listview.DataSource.DisplayItems.IndexOf(App.tappedItem);
                     Device.BeginInvokeOnMainThread(() => { listview.RefreshListViewItem(previousIndex, previousIndex, true); });
                 }
 
-                tappedItem = null;
+                App.tappedItem = null;
             }
             else
             {
-                tappedItem = e.ItemData as Item;
-                tappedItem.ShowActionMenu = true;
+                App.tappedItem = e.ItemData as Item;
+                if(!App.tappedItem.ShowActionMenu)
+                    App.tappedItem.ShowActionMenu = true;
 
                 if (Device.RuntimePlatform == Device.macOS)
                 {

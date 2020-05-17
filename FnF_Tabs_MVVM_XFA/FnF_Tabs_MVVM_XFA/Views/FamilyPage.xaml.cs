@@ -47,29 +47,6 @@ namespace FnF_Tabs_MVVM_XFA.Views
         //    }
         //}
 
-        //private void ItemsListView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
-        //{
-        //    Item prevItem = (Item)e.RemovedItems.FirstOrDefault();
-
-        //    if (prevItem != null)
-        //    {
-        //        int prevIndex = ItemsListView.DataSource.DisplayItems.IndexOf(prevItem);
-        //        prevItem.ShowActionMenu = false;
-        //        //Device.BeginInvokeOnMainThread(() => { ItemsListView.RefreshListViewItem(prevIndex, prevIndex, false); });
-        //        ItemsListView.RefreshListViewItem(prevIndex, prevIndex, false);
-        //    }
-
-        //    Item nextItem = (Item)e.AddedItems.FirstOrDefault();
-
-        //    if (nextItem != null)
-        //    {
-        //        int nextIndex = ItemsListView.DataSource.DisplayItems.IndexOf(nextItem);
-        //        nextItem.ShowActionMenu = false;
-        //        //Device.BeginInvokeOnMainThread(() => { ItemsListView.RefreshListViewItem(nextIndex, nextIndex, false); });
-        //        ItemsListView.RefreshListViewItem(nextIndex, nextIndex, false);
-        //    }
-        //}
-
         async void AddItem_Clicked(object sender, EventArgs e)
         {
             // CHANGE: Added view model to the call params in FamilyPage
@@ -133,6 +110,21 @@ namespace FnF_Tabs_MVVM_XFA.Views
             ItemsListView.SelectedItem = item;
 
             Debug.WriteLine($"Exiting: gstrTapNotes_Tapped - ID = {ID}");
+        }
+
+        private async void EditAction_Tapped(object sender, EventArgs e)
+        {
+            Item item = (Item)((TappedEventArgs)e).Parameter;
+
+            if (item != null)
+            {
+                var currentIndex = ItemsListView.DataSource.DisplayItems.IndexOf(item);
+                item.ShowActionMenu = false;
+                Device.BeginInvokeOnMainThread(() => { ItemsListView.RefreshListViewItem(currentIndex, currentIndex, true); });
+                App.tappedItem = null;
+
+                await Navigation.PushAsync(new ItemDetailPage(familyViewModel, item));
+            }
         }
     }
 }
